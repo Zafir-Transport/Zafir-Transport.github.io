@@ -38,6 +38,8 @@ body {
 }
 
 .center-content {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   width: 90%;
   padding: 15px;
@@ -93,4 +95,12 @@ img {
   justify-content: center;
 
   align-items: center;
+}
+
+#mlb2-5352017.ml-form-embedContainer
+  .ml-form-embedWrapper
+  .ml-form-embedBody
+  .ml-form-horizontalRow
+  input {
+  height: 100%;
 }
