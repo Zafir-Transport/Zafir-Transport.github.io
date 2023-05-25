@@ -1,57 +1,100 @@
-<!doctype html>
-<html lang=en>
-
-<head>
-    <meta charset=UTF-8 />
-    <meta name=description content="Free coming soon template">
-    <meta name=author content="Pawel Zuchowski">
-    <meta name=viewport content="width=device-width,initial-scale=1" />
-    <meta http-equiv=X-UA-Compatible content="ie=edge" />
-    <link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css
-        integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel=stylesheet>
-    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;700&display=swap" rel=stylesheet>
-    <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
-    <script src=https://kit.fontawesome.com/3c09bcb51a.js></script>
-    <title>Comming Soon</title>
-    <link href="styles/main.css" rel="stylesheet">
-</head>
-
-<body>
-    <div class=container>
-        <div class=row>
-            <div class="left-wrap col-12 col-md-5">
-                <div class=left>
-                    <p><span class=days></span><span class=small> days</span></p>
-                    <p><span class=hours></span><span class=small> hours</span></p>
-                    <p>&nbsp;&nbsp;<span class=minutes></span><span class=small> minutes</span></p>
-                    <p>&nbsp;&nbsp;<span class=seconds></span><span class=small> seconds</span></p>
-                </div>
-            </div>
-            <div class="col-12 col-md-7 right">
-                <div class=mainInfo>
-                    <h1>COMING SOON</h1>
-                    <p class=slogan>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime consequuntur
-                        delectus asperiores tempora autem laboriosam omnis. </p>
-                    <form class=form-subscribe action=#> <input type=email class=form placeholder="Your email address"
-                            required> <button type=submit>Subscribe</button> </form>
-                </div>
-                <ul class=icon-list>
-                    <li class=icon><a class=twitter href=google.com></a></li>
-                    <li class=icon><a class=linkedin href=google.com></a></li>
-                    <li class=icon><a class=facebook href=google.com></a></li>
-                    <li class=icon><a class=instagram href=google.com></a></li>
-                    <li class=icon><a class=youtube href=google.com></a></li>
-                    <li class=icon><a class=github href=google.com></a></li>
-                    <li class=icon><a class=stackoverflow href=google.com></a></li>
-                    <li class=icon><a class=medium href=google.com></a></li>
-                    
-                </ul>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coming Soon</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="center-content">
+        <img src="logo.svg" alt="Logo" class="mb-4" />
+        <h1>Coming Soon</h1>
+        <div class="countdown" id="countdown">
+          <div class="time-unit"><span id="days"></span> days</div>
+          <div class="time-unit"><span id="hours"></span> hours</div>
+          <div class="time-unit"><span id="minutes"></span> minutes</div>
+          <div class="time-unit"><span id="seconds"></span> seconds</div>
         </div>
-    </div>
-    <script type="text/javascript" src="scripts/bundle.js"></script>
- 
-</body>
 
+        <h4 for="emailInput" class="">Join the waitlist:</h4>
+        <div class="d-flex row justify-content-center align-items-center">
+          <div id="emailField" class="input-group input-group-lg w-75">
+            <input
+              id="emailInput"
+              type="email"
+              class="form-control"
+              placeholder="Enter your email"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary input-group-btn"
+                type="button"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p class="text-center">
+          Bringing you the best options together for your transportation
+        </p>
+        <div class="social-media">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <script>
+      var endDate = moment("2023-06-15 00:00:00");
+      var interval = setInterval(function () {
+        var diff = moment.duration(endDate.diff(moment()));
+        document.getElementById("days").innerHTML = `${diff.days()}`;
+        document.getElementById("hours").innerHTML = `${diff.hours()}`;
+        document.getElementById("minutes").innerHTML = `${diff.minutes()}`;
+        document.getElementById("seconds").innerHTML = `${diff.seconds()}`;
+        if (diff <= 0) {
+          clearInterval(interval);
+          document.getElementById("days").innerHTML = "We're";
+          document.getElementById("hours").innerHTML = "Now";
+          document.getElementById("minutes").innerHTML = "Live!";
+          document.getElementById("seconds").innerHTML = "";
+        }
+      }, 1000);
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
