@@ -104,3 +104,13 @@ img {
   input {
   height: 100%;
 }
+
+.spaceing {
+  height: 50px;
+}
+.email-form .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 8px 20px;
+}
