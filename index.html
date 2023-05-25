@@ -20,6 +20,30 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- MailerLite Universal -->
+    <script>
+      (function (w, d, e, u, f, l, n) {
+        (w[f] =
+          w[f] ||
+          function () {
+            (w[f].q = w[f].q || []).push(arguments);
+          }),
+          (l = d.createElement(e)),
+          (l.async = 1),
+          (l.src = u),
+          (n = d.getElementsByTagName(e)[0]),
+          n.parentNode.insertBefore(l, n);
+      })(
+        window,
+        document,
+        "script",
+        "https://assets.mailerlite.com/js/universal.js",
+        "ml"
+      );
+      ml("account", "453562");
+    </script>
+
+    <!-- End MailerLite Universal -->
   </head>
   <body>
     <div class="container-fluid">
@@ -35,7 +59,13 @@
 
         <h4 for="emailInput" class="">Join the waitlist:</h4>
         <div class="d-flex row justify-content-center align-items-center">
-          <div id="emailField" class="input-group input-group-lg w-75">
+          <div class="ml-embedded" data-form="VBDUNn"></div>
+
+          <!-- <form
+            id="emailField"
+            class="input-group input-group-lg w-75"
+            onsubmit="handleSubmit()"
+          >
             <input
               id="emailInput"
               type="email"
@@ -45,12 +75,12 @@
             <div class="input-group-append">
               <button
                 class="btn btn-outline-secondary input-group-btn"
-                type="button"
+                type="submit"
               >
                 Subscribe
               </button>
             </div>
-          </div>
+          </form> -->
         </div>
       </div>
       <div class="footer">
@@ -80,6 +110,27 @@
           document.getElementById("seconds").innerHTML = "";
         }
       }, 1000);
+
+      var handleSubmit = function (e) {
+        e.preventDefault();
+        var email = document.getElementById("emailInput").value;
+
+        $.post(
+          "https://assets.mailerlite.com/jsonp/453562/forms/89149499300119878/subscribe",
+          {
+            email: email,
+
+            resubscribe: true,
+          },
+          function (data) {
+            console.log(data);
+            document.getElementById("emailField").innerHTML =
+              "Thank you for subscribing!";
+          }
+        );
+
+        return;
+      };
     </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
